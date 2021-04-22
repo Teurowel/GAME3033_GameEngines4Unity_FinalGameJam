@@ -40,6 +40,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] Transform modelHip; //TO scale up and down player
 
+    bool isOnEffect = false; //is player having effect?
+
     //Event
     [HideInInspector]
     public UnityEvent OnDetectInteractable; //FtoInteract UI will subscribte this
@@ -222,6 +224,12 @@ public class Player : MonoBehaviour
     //Keeep calling this function to detect interactable object
     void DetectInteractableObject()
     {
+        //If player is alreay having effect, return
+        if(isOnEffect == true)
+        {
+            return;
+        }
+
         //Raycast to detect interactable layer
         RaycastHit hitResult;
         Vector3 origin = transform.position;
@@ -261,6 +269,13 @@ public class Player : MonoBehaviour
             {
                 interactable.OnInteracted(this);
             }
+
+            if (detectedInteractable != null)
+            {
+                Debug.Log("UnDetect Interactable");
+                detectedInteractable = null;
+                OnUnDetectInteractable.Invoke();
+            }
         }
     }
 
@@ -275,5 +290,10 @@ public class Player : MonoBehaviour
     public void SetScale(Vector3 newScale)
     {
         modelHip.localScale = newScale;
+    }
+
+    public void SetIsOnEffect(bool isEffect)
+    {
+        isOnEffect = isEffect;
     }
 }

@@ -10,10 +10,12 @@ public class ChangePlayerScale : MonoBehaviour, IInteractable
     [SerializeField] float playerMass = 30;
     [SerializeField] float playerMoveForce = 30;
     [SerializeField] Vector3 playerScale = Vector3.zero;
+    [SerializeField] float playerMaxSpeed = 0;
 
     float originPlayerMoveForce = 0.0f;
     float originPlayerMass = 0.0f;
     Vector3 originPlayerScale = Vector3.zero;
+    float originPlayerMaxSpeed = 0.0f;
 
     Player interacter = null;
     Collider _collider;
@@ -40,6 +42,10 @@ public class ChangePlayerScale : MonoBehaviour, IInteractable
         originPlayerMoveForce = interacter.GetComponent<PlayerMovement>().moveForce;
         interacter.GetComponent<PlayerMovement>().moveForce = playerMoveForce;
 
+        //Set max speed
+        originPlayerMaxSpeed = interacter.GetComponent<PlayerMovement>().maxSpeed;
+        interacter.GetComponent<PlayerMovement>().maxSpeed = playerMaxSpeed;
+
         //Disable renderer
         foreach (Renderer renderer in rendererToDiable)
         {
@@ -48,6 +54,9 @@ public class ChangePlayerScale : MonoBehaviour, IInteractable
 
         //Disable collider
         _collider.enabled = false;
+
+        //Set player on effect
+        interacter.SetIsOnEffect(true);
 
         //call disable effect after some time
         Invoke(nameof(DisableEffect), effectTime);
@@ -58,6 +67,9 @@ public class ChangePlayerScale : MonoBehaviour, IInteractable
         interacter.transform.localScale = originPlayerScale;
         interacter.GetComponent<Rigidbody>().mass = originPlayerMass;
         interacter.GetComponent<PlayerMovement>().moveForce = originPlayerMoveForce;
+        interacter.GetComponent<PlayerMovement>().maxSpeed = originPlayerMaxSpeed;
+
+        interacter.SetIsOnEffect(false);
 
         foreach (Renderer renderer in rendererToDiable)
         {
