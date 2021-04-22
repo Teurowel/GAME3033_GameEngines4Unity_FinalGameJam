@@ -33,9 +33,16 @@ public class Player : MonoBehaviour
 
     [Header("Raycast Settings")]
     [SerializeField] float rayDistance = 100;
+    [SerializeField] float rayYOffset = 0;
     [SerializeField] LayerMask interactableLayerMask;
 
     GameObject detectedInteractable = null; //Detected interactable object
+
+    //Event
+    [HideInInspector]
+    public UnityEvent OnDetectInteractable; //FtoInteract UI will subscribte this
+    [HideInInspector]
+    public UnityEvent OnUnDetectInteractable; //FtoInteract UI will subscribte this
 
     //Comp
     Stats stats;
@@ -215,14 +222,30 @@ public class Player : MonoBehaviour
     {
         //Raycast to detect interactable layer
         RaycastHit hitResult;
-        if(Physics.Raycast(transform.position, transform.forward, out hitResult, rayDistance, interactableLayerMask))
+        Vector3 origin = transform.position;
+        origin.y += rayYOffset;
+        if (Physics.Raycast(origin, transform.forward, out hitResult, rayDistance, interactableLayerMask))
         {
             //Debug.Log(hitResult.collider.gameObject.name);
-            detectedInteractable = hitResult.collider.gameObject;
+            if (detectedInteractable == null)
+            {
+                Debug.Log("Detect Interactable");
+                detectedInteractable = hitResult.collider.gameObject;
+
+                if (OnDetectInteractable != null)
+                {
+                    OnDetectInteractable.Invoke();
+                }
+            }
         }
         else
         {
-            detectedInteractable = null;
+            if (detectedInteractable != null)
+            {
+                Debug.Log("UnDetect Interactable");
+                detectedInteractable = null;
+                OnUnDetectInteractable.Invoke();
+            }
         }
     }
 
@@ -242,6 +265,8 @@ public class Player : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawRay(transform.position, transform.forward * rayDistance);
+        Vector3 origin = transform.position;
+        origin.y += rayYOffset;
+        Gizmos.DrawRay(origin, transform.forward * rayDistance);
     }
 }
