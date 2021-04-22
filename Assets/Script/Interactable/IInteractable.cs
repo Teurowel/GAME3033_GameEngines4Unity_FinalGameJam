@@ -6,6 +6,6 @@ using UnityEngine;
 
 public interface IInteractable
 {
-    void OnInteracted(GameObject interacter);
+    void OnInteracted(Player interacter);
     void DisableEffect();
 }

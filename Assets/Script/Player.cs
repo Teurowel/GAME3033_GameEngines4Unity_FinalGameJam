@@ -38,6 +38,8 @@ public class Player : MonoBehaviour
 
     GameObject detectedInteractable = null; //Detected interactable object
 
+    [SerializeField] Transform modelHip; //TO scale up and down player
+
     //Event
     [HideInInspector]
     public UnityEvent OnDetectInteractable; //FtoInteract UI will subscribte this
@@ -257,7 +259,7 @@ public class Player : MonoBehaviour
             IInteractable interactable = detectedInteractable.GetComponent<IInteractable>();
             if(interactable != null)
             {
-                interactable.OnInteracted(gameObject);
+                interactable.OnInteracted(this);
             }
         }
     }
@@ -268,5 +270,10 @@ public class Player : MonoBehaviour
         Vector3 origin = transform.position;
         origin.y += rayYOffset;
         Gizmos.DrawRay(origin, transform.forward * rayDistance);
+    }
+
+    public void SetScale(Vector3 newScale)
+    {
+        modelHip.localScale = newScale;
     }
 }

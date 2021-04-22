@@ -5,8 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 10.0f;
-
+    public float moveForce = 10.0f;
+    public float maxSpeed = 5.0f;
     Vector3 moveDirection = Vector3.zero;
 
     //Comp
@@ -47,7 +47,12 @@ public class PlayerMovement : MonoBehaviour
             Vector3 localMoveDirection = Quaternion.Euler(transform.rotation.eulerAngles) * moveDirection.normalized;
             localMoveDirection.Normalize();
             localMoveDirection.y = origin.y;
-            rb.velocity = localMoveDirection * moveSpeed;
+            //rb.velocity = localMoveDirection * moveSpeed;
+            rb.AddForce(localMoveDirection * moveForce);
+            if(rb.velocity.magnitude > maxSpeed)
+            {
+                rb.velocity = rb.velocity.normalized * maxSpeed;
+            }
         }
         else
         {
