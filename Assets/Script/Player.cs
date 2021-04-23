@@ -52,6 +52,7 @@ public class Player : MonoBehaviour
     public EShieldType shieldType = EShieldType.None; //what shield player has?
 
     public Vector3 resetPosition = Vector3.zero; //when play again, player go this position
+    public Vector3 startPos = Vector3.zero;
 
     //Event
     [HideInInspector]
@@ -80,6 +81,8 @@ public class Player : MonoBehaviour
 
         VFX = GetComponentInChildren<VisualEffect>();
         VFX.enabled = false;
+
+        startPos = transform.position;
 
         //if (Data.HasInstance)
         //{
@@ -324,6 +327,11 @@ public class Player : MonoBehaviour
         transform.position = resetPosition;
         animator.SetTrigger("resetTrigger");
 
-        stats.HealthModify(stats.maxHp);
+        stats.SetHealth(stats.maxHp);
+    }
+
+    public void ResetPlayerToStartPos()
+    {
+        resetPosition = startPos;
     }
 }

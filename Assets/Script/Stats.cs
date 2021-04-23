@@ -52,4 +52,27 @@ public class Stats : MonoBehaviour
             }
         }
     }
+
+    public void SetHealth(float newHp)
+    {
+        hp = newHp;
+
+        if (hp >= maxHp)
+        {
+            hp = maxHp;
+        }
+
+        if (OnHealthChanged != null)
+        {
+            OnHealthChanged.Invoke(hp, maxHp);
+        }
+
+        if (hp <= 0)
+        {
+            if (OnHealthBelowZero != null)
+            {
+                OnHealthBelowZero.Invoke();
+            }
+        }
+    }
 }
