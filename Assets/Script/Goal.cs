@@ -24,6 +24,7 @@ public class Goal : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Win");
+        FindObjectOfType<Player>().resetPosition = new Vector3(-16, 0, 0);
         gameMenu.OnGameOver("Game Win");
     }
 }

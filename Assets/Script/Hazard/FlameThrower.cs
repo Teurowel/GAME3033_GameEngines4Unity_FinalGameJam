@@ -6,6 +6,7 @@ public class FlameThrower : MonoBehaviour
 {
     [SerializeField] float damage = 1.0f;
     [SerializeField] float damageInterval = 0.5f;
+    [SerializeField] Player.EShieldType shieldType = Player.EShieldType.None;
 
     Player player;
     // Start is called before the first frame update
@@ -26,7 +27,7 @@ public class FlameThrower : MonoBehaviour
         {
             player = other.GetComponent<Player>();
 
-            if (player.shieldType != Player.EShieldType.Fire)
+            if (player.shieldType != shieldType)
             {
                 InvokeRepeating(nameof(DamagePlayer), 0.0f, damageInterval);
             }
