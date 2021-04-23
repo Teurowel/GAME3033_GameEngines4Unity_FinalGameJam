@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
-
+using UnityEngine.VFX;
 public class Player : MonoBehaviour
 {
     //public Material projectileMaterial { get; private set; }
@@ -52,6 +52,8 @@ public class Player : MonoBehaviour
     Stats stats;
     Animator animator;
     PlayerInput playerInput;
+    public SkinnedMeshToMesh skinnedMeshToMesh;
+    public VisualEffect VFX;
 
     // Start is called before the first frame update
     void Start()
@@ -61,6 +63,12 @@ public class Player : MonoBehaviour
 
         animator = GetComponent<Animator>();
         playerInput = GetComponent<PlayerInput>();
+
+        skinnedMeshToMesh = GetComponent<SkinnedMeshToMesh>();
+        skinnedMeshToMesh.enabled = false;
+
+        VFX = GetComponentInChildren<VisualEffect>();
+        VFX.enabled = false;
 
         //if (Data.HasInstance)
         //{
