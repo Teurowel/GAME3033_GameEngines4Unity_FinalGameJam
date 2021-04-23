@@ -116,11 +116,19 @@ public class GameMenu : MonoBehaviour
         //pause
         Time.timeScale = 1;
 
-        FindObjectOfType<Player>().ResetPlayer();
+        Player player = FindObjectOfType<Player>();
+        //If player is dead.. conitinue from save point
+        if(player.isDead == true)
+        {
+            player.ResetPlayer();
+        }
+        //If player cleared map
+        else
+        {
+            SceneManager.LoadScene(gameLevelScene);
+        }
 
         hudCanvas.enabled = true;
         gameOverCanvas.enabled = false;
-
-        //SceneManager.LoadScene(gameLevelScene);
     }
 }
