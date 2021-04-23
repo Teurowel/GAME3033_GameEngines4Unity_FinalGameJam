@@ -1145,7 +1145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skinnedMesh: {fileID: 8333848114121892640}
   VFXGraph: {fileID: 540585648982331893}
-  refreshRate: 0.02
+  refreshRate: 2
 --- !u!114 &3040522829999827862
 MonoBehaviour:
   m_ObjectHideFlags: 0
