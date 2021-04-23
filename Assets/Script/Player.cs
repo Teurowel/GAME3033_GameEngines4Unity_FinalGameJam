@@ -287,6 +287,7 @@ public class Player : MonoBehaviour
             if(interactable != null)
             {
                 interactable.OnInteracted(this);
+                SoundManager.instance.PlaySFX("AmmoPickupSFX");
             }
 
             if (detectedInteractable != null)
