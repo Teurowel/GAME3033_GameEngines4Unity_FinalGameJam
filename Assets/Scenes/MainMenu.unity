@@ -662,7 +662,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f173403981dc5754e813211c9ad2599c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: adfb5a5549b55c94486a2d13cebfd2e7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1097,10 +1097,9 @@ MonoBehaviour:
     m_LineSpacing: 1.47
   m_Text: 'george brown coeelge
 
-    GAME3033 Midterm game jam
+    GAME3033 Final game jam
 
-    Doosung Jang,
-    101175013'
+    Doosung Jang, 101175013'
 --- !u!222 &742623613
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1166,7 +1165,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 67c699ead12908a45aed667825311cbe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2f34c5a674648524094ffaa095497772, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1483,7 +1482,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 758e86d24b3eed446b110e0ca4a56398, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0ea38986f65416f4ab5cf3c2284e048f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2452,12 +2451,10 @@ MonoBehaviour:
 
     Mouse : rotate character
 
-    left mouse
-    : fire bullet
+    F : Interact
 
-    p : pause
-
-    1, 2, 3 : change bullet'
+    p
+    : pause'
 --- !u!222 &1453272972
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2910,8 +2907,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1.47
-  m_Text: Use color relationship to defeat enemy. Find a way to reach the goal to
-    finish game
+  m_Text: Interact with object and clear the room
 --- !u!222 &1913241131
 CanvasRenderer:
   m_ObjectHideFlags: 0
