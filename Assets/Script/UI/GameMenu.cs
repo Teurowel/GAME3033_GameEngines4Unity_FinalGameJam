@@ -116,6 +116,11 @@ public class GameMenu : MonoBehaviour
         //pause
         Time.timeScale = 1;
 
-        SceneManager.LoadScene(gameLevelScene);
+        FindObjectOfType<Player>().ResetPlayer();
+
+        hudCanvas.enabled = true;
+        gameOverCanvas.enabled = false;
+
+        //SceneManager.LoadScene(gameLevelScene);
     }
 }

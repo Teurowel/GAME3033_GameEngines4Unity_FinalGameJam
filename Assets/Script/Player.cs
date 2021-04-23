@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     public GameMenu gameMenu;
 
     //public Data.EColor playerColor;
-    bool isDead = false;
+    public bool isDead = false;
 
     [Header("Raycast Settings")]
     [SerializeField] float rayDistance = 100;
@@ -50,6 +50,8 @@ public class Player : MonoBehaviour
     bool isOnEffect = false; //is player having effect?
 
     public EShieldType shieldType = EShieldType.None; //what shield player has?
+
+    public Vector3 resetPosition = Vector3.zero; //when play again, player go this position
 
     //Event
     [HideInInspector]
@@ -312,5 +314,15 @@ public class Player : MonoBehaviour
     public void SetIsOnEffect(bool isEffect)
     {
         isOnEffect = isEffect;
+    }
+
+    public void ResetPlayer()
+    {
+        isDead = false;
+        playerInput.enabled = true;
+        transform.position = resetPosition;
+        animator.SetTrigger("resetTrigger");
+
+        stats.HealthModify(stats.maxHp);
     }
 }

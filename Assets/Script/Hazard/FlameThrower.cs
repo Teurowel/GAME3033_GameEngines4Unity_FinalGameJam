@@ -45,7 +45,14 @@ public class FlameThrower : MonoBehaviour
     {
         if(player != null)
         {
-            player.GetComponent<Stats>().HealthModify(-damage);
+            if (player.isDead == false)
+            {
+                player.GetComponent<Stats>().HealthModify(-damage);
+            }
+            else
+            {
+                CancelInvoke(nameof(DamagePlayer));
+            }
         }
     }
 }
