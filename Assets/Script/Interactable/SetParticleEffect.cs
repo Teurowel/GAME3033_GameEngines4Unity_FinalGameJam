@@ -7,6 +7,7 @@ public class SetParticleEffect : MonoBehaviour, IInteractable
 {
     [SerializeField] float effectTime = 5;
     [SerializeField] List<Renderer> rendererToDiable;
+    [SerializeField] Player.EShieldType shieldType = Player.EShieldType.None;
 
     Player interacter = null;
     Collider _collider;
@@ -34,9 +35,11 @@ public class SetParticleEffect : MonoBehaviour, IInteractable
         interacter.VFX.enabled = true;
         interacter.VFX.SetVector4("Color", VFX.GetVector4("Color"));
 
+        //Set shield type
+        interacter.shieldType = shieldType;
 
 
-        
+
         skinnedMeshToMesh.enabled = false;
         VFX.enabled = false;
 
@@ -64,6 +67,8 @@ public class SetParticleEffect : MonoBehaviour, IInteractable
         //Enable VFX and set color
         interacter.VFX.enabled = false;
 
+        //Set shield type
+        interacter.shieldType = Player.EShieldType.None;
 
         skinnedMeshToMesh.enabled = true;
         VFX.enabled = true;

@@ -26,6 +26,13 @@ public class Player : MonoBehaviour
 
     //[SerializeField] ParticleSystem bloodSplatFX;
 
+    public enum EShieldType 
+    {
+        None,
+        Fire,
+        Ice
+    }
+
     public GameMenu gameMenu;
 
     //public Data.EColor playerColor;
@@ -41,6 +48,8 @@ public class Player : MonoBehaviour
     [SerializeField] Transform modelHip; //TO scale up and down player
 
     bool isOnEffect = false; //is player having effect?
+
+    public EShieldType shieldType = EShieldType.None; //what shield player has?
 
     //Event
     [HideInInspector]
