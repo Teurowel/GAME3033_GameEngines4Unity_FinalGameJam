@@ -19,8 +19,8 @@ public class PlayerRotation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Vector2 cursorOffset = new Vector2(cursorTexture.width / 2, cursorTexture.height / 2);
-        Cursor.SetCursor(cursorTexture, cursorOffset, CursorMode.Auto);
+        //Vector2 cursorOffset = new Vector2(cursorTexture.width / 2, cursorTexture.height / 2);
+        //Cursor.SetCursor(cursorTexture, cursorOffset, CursorMode.Auto);
         //hide cursor and lock
         //Cursor.visible = false;
         //Cursor.lockState = CursorLockMode.Locked;
